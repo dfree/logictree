@@ -54,14 +54,15 @@
 		drawTree(x1, y1, x2, y2, trunkHeight,
 				- Math.PI / 2, branchingDepth);
 		}
+		
+		function draw (e) {
+			branchLengthRatio = ((canvas.height - e.y) - canvas.height / 2) / canvas.height + 0.5;
+			branchAngleDifference = (e.x  - canvas.width / 2) / canvas.width * Math.PI;
+			redrawTree();
+		};
 
-		canvas.addEventListener("mousemove",function(e){
-		branchLengthRatio = ((canvas.height - e.y) - canvas.height / 2) / canvas.height + 0.5;
-		branchAngleDifference = (e.x  - canvas.width / 2) / canvas.width * Math.PI;
-		redrawTree();
-		console.log("branchLengthRatio = "+branchLengthRatio);
-		console.log("branchAngleDifference = "+branchAngleDifference);
-		});
+		canvas.addEventListener("mousemove" ,draw);
+		canvas.addEventListener("touchmove" ,draw);
 
 		redrawTree();
 	};

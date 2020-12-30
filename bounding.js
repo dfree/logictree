@@ -56,13 +56,15 @@
 		}
 		
 		function draw (e) {
-			branchLengthRatio = ((canvas.height - e.y) - canvas.height / 2) / canvas.height + 0.5;
-			branchAngleDifference = (e.x  - canvas.width / 2) / canvas.width * Math.PI;
+			var x = e.touches ? e.touches[0].clientX : e.clientX;
+			var y = e.touches ? e.touches[0].clientY : e.clientY;
+			branchLengthRatio = ((canvas.height - y) - canvas.height / 2) / canvas.height + 0.5;
+			branchAngleDifference = (x  - canvas.width / 2) / canvas.width * Math.PI;
 			redrawTree();
 		};
 
-		canvas.addEventListener("mousemove" ,draw);
-		canvas.addEventListener("touchmove" ,draw);
+		document.addEventListener("mousemove" ,draw);
+		document.addEventListener("touchmove" ,draw);
 
 		redrawTree();
 	};

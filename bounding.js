@@ -55,10 +55,11 @@
 				- Math.PI / 2, branchingDepth);
 		}
 		
+
 		function draw (e) {
 			var x = e.touches ? e.touches[0].clientX : e.clientX;
 			var y = e.touches ? e.touches[0].clientY : e.clientY;
-			branchLengthRatio = ((canvas.height - y) - canvas.height / 2) / canvas.height + 0.5;
+			branchLengthRatio = ((canvas.height - y) - canvas.height / 2) / canvas.height * 0.25 + 0.8	;
 			branchAngleDifference = (x  - canvas.width / 2) / canvas.width * Math.PI;
 			redrawTree();
 		};

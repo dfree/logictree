@@ -13,45 +13,45 @@
 
 		function drawTree(x1, y1, x2, y2, branchLength,
 						branchAngle, depth){
-		if(depth == 0)
-			return;
-		else{
-			c.globalAlpha = 0.023 * depth ;
-			c.lineWidth = 2 ;
-			c.lineCap = "round";
-			c.beginPath();
-			c.moveTo(x1, y1);
-			c.lineTo(x2, y2);
-			c.closePath();
-			c.stroke();
+			if(depth == 0)
+				return;
+			else{
+				c.globalAlpha = 0.023 * depth ;
+				c.lineWidth = 2 ;
+				c.lineCap = "round";
+				c.beginPath();
+				c.moveTo(x1, y1);
+				c.lineTo(x2, y2);
+				c.closePath();
+				c.stroke();
 
-			
-			branchLength *= branchLengthRatio;
-			
-			function branch(angle){
-			var branchX2 = x2 + branchLength * Math.cos(angle);
-			var branchY2 = y2 + branchLength * Math.sin(angle);
-			drawTree(x2, y2, branchX2, branchY2, branchLength,
-					angle, depth - 1);
+				
+				branchLength *= branchLengthRatio;
+				
+				function branch(angle){
+				var branchX2 = x2 + branchLength * Math.cos(angle);
+				var branchY2 = y2 + branchLength * Math.sin(angle);
+				drawTree(x2, y2, branchX2, branchY2, branchLength,
+						angle, depth - 1);
+				}
+				
+				// Right branch
+				branch(branchAngle + branchAngleDifference);
+				
+				// Left branch
+				branch(branchAngle - branchAngleDifference);
 			}
-			
-			// Right branch
-			branch(branchAngle + branchAngleDifference);
-			
-			// Left branch
-			branch(branchAngle - branchAngleDifference);
-		}
 		}
 
 		function redrawTree(){
 		
-		c.clearRect(0,0, canvas.width, canvas.height);
-		
-		var x1 = centerX;
-		var y1 = canvas.height;
-		var x2 = centerX;
-		var y2 = canvas.height - trunkHeight;
-		drawTree(x1, y1, x2, y2, trunkHeight,
+			c.clearRect(0,0, canvas.width, canvas.height);
+			
+			var x1 = centerX;
+			var y1 = canvas.height;
+			var x2 = centerX;
+			var y2 = canvas.height - trunkHeight;
+			drawTree(x1, y1, x2, y2, trunkHeight,
 				- Math.PI / 2, branchingDepth);
 		}
 		

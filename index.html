@@ -17,11 +17,12 @@
         
         /*---- FOR PRESENTATION ----*/
         html, body{
-            background-color: #c5fa00;
+            /* background-color: #c5fa00; */
             height: 100%;
             width: 100%;
         }
         #center {
+            display: none;
             position:absolute;
             top: 70%;
             left: 50%;
@@ -31,12 +32,19 @@
             height: auto;
             pointer-events: none;
         }
+        #tree {
+            /* opacity: 0.8; */
+        }
+        #tree_mask {
+            display: none;
+        }
     </style>
 </head>
 
 
 <body>
     <canvas id="tree"></canvas>
+    <canvas id="tree_mask"></canvas>
     <img id="center" src="img/logo.png" draggable="false"/>
 </body>
 

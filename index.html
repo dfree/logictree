@@ -6,38 +6,185 @@
     <title>logictree</title>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0"/>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.0/plugins/CSSPlugin.min.js"></script>
-    
+    <link rel="icon" href="img/icon.png" sizes="any" type="image/png">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.0/easing/EasePack.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.0/TweenLite.min.js"></script>
-    <script type="text/javascript" src="dist/perspective-transform.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="bounding.js"></script>
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <style type="text/css">
-        
-        /*---- FOR PRESENTATION ----*/
+        @font-face {
+            font-family: 'Neue Haas Medium';
+            src:    url('font/NeueHaasDisplay-Mediu.woff2') format('woff2'),
+                    url('font/NeueHaasDisplay-Mediu.woff') format('woff'),
+                    url('font/NeueHaasDisplay-Mediu.ttf') format('truetype'),
+                    url('font/NeueHaasDisplay-Mediu.eot') format('embedded-opentype');
+        }
+        @font-face {
+            font-family: 'Neue Haas Thin';
+            src:    url('font/NeueHaasDisplay-XThin.woff2') format('woff2'),
+                    url('font/NeueHaasDisplay-XThin.woff') format('woff'),
+                    url('font/NeueHaasDisplay-XThin.ttf') format('truetype'),
+                    url('font/NeueHaasDisplay-XThin.eot') format('embedded-opentype');
+        }
+        @font-face {
+            font-family: 'Neue Haas Regular';
+            src:    url('font/NeueHaasDisplay-Roman.woff2') format('woff2'),
+                    url('font/NeueHaasDisplay-Roman.woff') format('woff'),
+                    url('font/NeueHaasDisplay-Roman.ttf') format('truetype'),
+                    url('font/NeueHaasDisplay-Roman.eot') format('embedded-opentype');
+        }
+        /* mobile width : 1380 */
         html, body{
             background-color: #c5fa00;
             height: 100%;
             width: 100%;
+            font-size: 12px;
+        }
+        #root {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
         }
         #center {
-            position:absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            max-width: 1040px;
-            height: auto;
-            pointer-events: none;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 10%;
+            left: 14%;
+            width: calc(100% - 28%);
+            height: calc(100% - 30%);
+            border: 0.24em dashed #000000;
+            border-radius: 6em;
+            box-sizing: border-box;
+            padding: 6em;
+        }
+        #insert {
+           font-family: 'Neue Haas Thin', sans-serif;
+           font-size: 6em; 
+        }
+        #logo {
+            position: absolute;
+            left: 2em;
+            bottom: 2.8em;
+            height: 3.4em;
+        }
+        #footer {
+            font-family: 'Neue Haas Regular', sans-serif;
+            position: absolute;
+            left: max(14em, calc(25% + 2em));
+            width: calc(100% - 25em);
+            bottom: 2.3em;
+            font-size: 1.3em;
+            letter-spacing: 0.02em;
+            line-height: 1.28;
+        }
+        #footer a, #footer a:visited, #footer a:hover {
+            color: #c5fa00;
+            background-color: #000000;
+            text-decoration: none;
+            padding: 0.2em;
+            padding-right: 0.38em;
+            padding-left: 0.38em;
+            cursor: pointer;
+        }
+        #footer a:hover {
+            color: #000000;
+            background-color: #c5fa00;
+        }
+        #text-wide {
+            display: block;
+        }
+        #text-narrow {
+            display: none;
+        }
+        #social {
+            position: absolute;
+            right: 2em;
+            bottom: 3em;
+        }
+        #social a, #social a:visited, #social a:hover {
+            color: #000000;
+            font-size: 3.1em;
+            text-decoration: none;
+            margin-left: 0.4em;
+        }
+        #social a:hover {
+            -webkit-text-stroke: 1px black;
+            -webkit-text-fill-color: #c5fa00;
+        }
+
+        @media only screen and (max-width: 900px) {
+            #social {
+                top: 2em;
+                bottom: unset;
+            }
+            #social a, #social a:visited, #social a:hover {
+                font-size: 2.8em;
+            }
+            #footer {
+                width: max-content;
+                max-width: calc(100% - max(14em, calc(25% + 2em)) - 2em);
+                left: unset;
+                right: 2em;
+            }
+            #text-wide {
+                display: none;
+            }
+            #text-narrow {
+                display: block;
+            }
+        }
+        @media only screen and (max-width: 600px) {
+            body {
+                font-size: 9px;
+            }
+        }
+        @media only screen and (max-width: 400px) {
+            body {
+                font-size: 7px;
+            }
+        }
+        @media (orientation: landscape) and (max-height: 800px) {
+            #center {
+                height: calc(100% - 40%);
+            }
+            #logo {
+                bottom: 1em;
+            }
+            #footer {
+                bottom: 0.98em;
+            }
+            #insert {
+                font-size: 5em;
+            }
         }
     </style>
 </head>
 
 
 <body>
-    <canvas id="tree"></canvas>
-    <img id="center" src="img/logo.png" draggable="false"/>
+    <div id="root">
+        <div id="center">
+            <div id="insert">Insert company's website here<span id="cursor">|</span></div>
+        </div>
+        <img id="logo" src="img/logo.png" draggable="false">
+        <div id="footer">
+            <div id="text-wide">
+                © 2021 - Logictree OÜ - 16167423 - Estonia, Tallinn, Keemia tn 4, 10616<br/>New website coming soon. Contact us at <a id="mail" href="mailto:root@logictr.ee">root@logictr.ee</a>
+            </div>
+            <div id="text-narrow">
+                © 2021 - Logictree OÜ - 16167423<br/>Estonia, Tallinn, Keemia tn 4, 10616<br/>New website coming soon.<br/>Contact us at <a id="mail" href="mailto:root@logictr.ee">root@logictr.ee</a>
+            </div>
+        </div>
+        <div id="social">
+            <a target="_blank" href="https://github.com/logictr-ee" class="fa fa-linkedin"></a>
+            <a target="_blank" href="https://github.com/logictr-ee" class="fa fa-github"></a>
+        </div>
+    </div>
 </body>
 
 </html>

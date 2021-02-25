@@ -5,22 +5,10 @@
     <meta charset="utf-8" />
     <title>logictree</title>
     <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0"/>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.0/plugins/CSSPlugin.min.js"></script>
     <link rel="icon" href="img/icon.png" sizes="any" type="image/png">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.0/easing/EasePack.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.9.0/TweenLite.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="bounding.js"></script>
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <style type="text/css">
-        @font-face {
-            font-family: 'Neue Haas Medium';
-            src:    url('font/NeueHaasDisplay-Mediu.woff2') format('woff2'),
-                    url('font/NeueHaasDisplay-Mediu.woff') format('woff'),
-                    url('font/NeueHaasDisplay-Mediu.ttf') format('truetype'),
-                    url('font/NeueHaasDisplay-Mediu.eot') format('embedded-opentype');
-        }
         @font-face {
             font-family: 'Neue Haas Thin';
             src:    url('font/NeueHaasDisplay-XThin.woff2') format('woff2'),
@@ -35,7 +23,6 @@
                     url('font/NeueHaasDisplay-Roman.ttf') format('truetype'),
                     url('font/NeueHaasDisplay-Roman.eot') format('embedded-opentype');
         }
-        /* mobile width : 1380 */
         html, body{
             background-color: #c5fa00;
             height: 100%;
@@ -163,6 +150,18 @@
             }
         }
     </style>
+    <script>
+        (function () {
+            window.onload = function(e) {
+                var isCursorVisible = false;
+                function toggleCursor() {
+                    isCursorVisible = !isCursorVisible;
+                    document.getElementById("cursor").style.visibility = isCursorVisible ? 'visible' : 'hidden';
+                }
+                setInterval(toggleCursor, 500);
+            };
+        })();
+    </script>
 </head>
 
 
@@ -174,10 +173,10 @@
         <img id="logo" src="img/logo.png" draggable="false">
         <div id="footer">
             <div id="text-wide">
-                © 2021 - Logictree OÜ - 16167423 - Estonia, Tallinn, Keemia tn 4, 10616<br/>New website coming soon. Contact us at <a id="mail" href="mailto:root@logictr.ee">root@logictr.ee</a>
+                © 2021 - Logictree OÜ - Estonia, Tallinn, Keemia tn 4, 10616<br/>New website coming soon. Contact us at <a id="mail" href="mailto:root@logictr.ee">root@logictr.ee</a>
             </div>
             <div id="text-narrow">
-                © 2021 - Logictree OÜ - 16167423<br/>Estonia, Tallinn, Keemia tn 4, 10616<br/>New website coming soon.<br/>Contact us at <a id="mail" href="mailto:root@logictr.ee">root@logictr.ee</a>
+                © 2021 - Logictree OÜ<br/>Estonia, Tallinn, Keemia tn 4, 10616<br/>New website coming soon.<br/>Contact us at <a id="mail" href="mailto:root@logictr.ee">root@logictr.ee</a>
             </div>
         </div>
         <div id="social">

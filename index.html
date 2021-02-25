@@ -135,18 +135,23 @@
                 font-size: 7px;
             }
         }
-        @media (orientation: landscape) and (max-height: 800px) {
+        @media (orientation: landscape) and (max-height: 550px) {
             #center {
                 height: calc(100% - 40%);
             }
-            #logo {
-                bottom: 1em;
-            }
-            #footer {
-                bottom: 0.98em;
-            }
             #insert {
                 font-size: 5em;
+            }
+            @media only screen and (max-width: 900px) {
+                #logo {
+                    bottom: 1em;
+                }
+                #footer {
+                    bottom: 0.98em;
+                }
+                #social {
+                    bottom: 1em;
+                }
             }
         }
     </style>
@@ -180,7 +185,7 @@
             </div>
         </div>
         <div id="social">
-            <a target="_blank" href="https://github.com/logictr-ee" class="fa fa-linkedin"></a>
+            <a target="_blank" href="https://www.linkedin.com/company/logictree/" class="fa fa-linkedin"></a>
             <a target="_blank" href="https://github.com/logictr-ee" class="fa fa-github"></a>
         </div>
     </div>
